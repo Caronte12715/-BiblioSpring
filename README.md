@@ -55,31 +55,45 @@
 
 
 **Instrucciones precisas para desplegar la aplicación:**
-<li> Compilación: 
+<p> Compilación: 
       1. Botón derecho sobre el proyecto. 
       2. Clickar sobre 'Run as'
-      3. Clickar sobre Spring Boot Application</li>
+      3. Clickar sobre Spring Boot Application </p>
      
-<li>Virtualización</li>
-      <p>Creamos una carpeta en home: (aquí meteremos nuestros archivos)</p>
-      `sudo mkdir compartida`
-      `sudo mount -t vboxsf shared /home/`
-      <p>Instalamos java:</p>
-      `sudo  apt install`
-      `sudo apt-get install -y openjdk-8-jdk`
-      <p>Instalamos mysql</p>
-      `sudo apt-get install mysql-server`
-      <p>Creamos la base de datos y el nombre de nuestra base de datos</p>
-      `sudo mysql`
-      <p>Creamos un usuario "root"</p>
-      `create user 'root'@'127.0.0.1';`
-      <p>Modificamos la contraseña de la base de datos</p>
-      `alter mysql.user 'root'@'localhost' identified with mysql_native_password by '1234';`
-      <p>Ejecutamos los .jar</p>
-      `sudo java -jar BiblioSpringUrjc-0.0.1-SNAPSHOT &
-      sudo java -jar Servicio_interno-0.0.1-SNAPSHOT  &`
-      
-<li> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y VirtualBox </li>      
+<p>Virtualización</p>
+
+Creamos una carpeta: (aquí meteremos nuestros archivos)
+
+		sudo mkdir carpeta  
+            sudo mount -t vboxsf shared /home/
+
+Instalamos Java
+
+		sudo  apt install  
+            sudo apt-get install -y openjdk-8-jdk
+            
+Instalamos MySQL server
+
+		sudo apt-get install mysql-server 
+            
+Creamos la base de datos y el nombre de nuestra BBDD
+
+		sudo bibliospringbd
+            
+Creamos el usuario "root"
+
+		create user 'root'@'127.0.0.1';     
+            
+Modificamos la contraseña de la base de datos
+
+		alter mysql.user 'root'@'localhost' identified with mysql_native_password by '1234';
+            
+Ejecutamos los .jar
+
+		sudo java -jar BiblioSpringUrjc-0.0.1-SNAPSHOT & 
+            sudo java -jar Servicio_interno-0.0.1-SNAPSHOT &           
+            
+<p> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y VirtualBox </p>      
       
 
 
