@@ -1,13 +1,13 @@
 # bibliotecaWebUrjc_DAD
 
-**Nombre de la aplicación web:** Biblioteca Web URJC
+**Nombre de la aplicación web:** BiblioSpring
 
 **Descripción de la temática de la web:**
 <p>La web consistirá en proporcionar servicio de una biblioteca tanto a usuarios que quieran hacer uso de la misma o tanto al bibliotecario para realizar todas las tareas de gestión que se necesitase. </p>
 
 **Entidades principales:**
 <ul>
-<li> Libro: Conlleva unos atributos que lo caracterizan (nombre, escritor, descripción, categoría) </li>
+<li>Libro: Conlleva unos atributos que lo caracterizan (nombre, escritor, descripción, categoría) </li>
 <li>Usuario: Diferencia de tipos de usuarios(si es socio o administrador de la biblioteca) y las acciones que permite realizar.</li>
 <li>Categoría:Tendrá varias temáticas en las diferentes áreas(informática, literatura, biología, deportes, historia, geografía...)</li>
 <li>Préstamo: Todo lo referente al control y gestión de los pagos de los carnet</li>
@@ -16,17 +16,15 @@
 
 **Funcionalidades del servicio interno:**
 <ul>
-<li>Enviar notificaciones de los préstamos a los socios o de la fecha de caducidad del carné.</li>
-<li>Comprobar cada cierto tiempo que se están realizando los pagos.</li>
-<li>Cobrar el dinero correspondiente al precio del carné de socio.</li>
+<li>Enviar un correo de bienvenida al registrarte</li>
 </ul>  
 
 **Parte privada:**
 <p>Los socios de la biblioteca pueden alquilar libros, también pueden renovar su carnet de socio anual, hacer reservas de libros, publicar alguna reseña sobre el libro alquilado, cambiar sus datos, realizar el pago de una deuda pendiente, ... </p>
-<p>El administrador (bibliotecario) podrá gestionar el pago de los socios de la biblioteca, podrá expulsar a un socio por su mal comportamiento en la biblioteca, podrá sancionar a un socio por no devolver el libro alquilado en su debido tiempo, podrá señalar los libros que no puedan ser alquilados, podrá repartir los libros de la biblioteca en categorías,... </p>
+<p>El administrador (bibliotecario) podrá añadir un libro, eliminar un libro, modificar las características de un libro, podrá gestionar los préstamos de libros, podrá repartir los libros de la biblioteca en categorías, podrá añadir y eliminar los tipos de Alternativas (Fanzines, Películas y Revistas)... </p>
 
 **Parte pública:**
-<p>Los usuarios que no sean socios de la biblioteca podrán consultar el horario de la biblioteca, consultar los precios y beneficios de poseer el carné de socio, una opción de contactar con la biblioteca (cómo llegar), ver las distintas redes sociales que tiene la biblioteca, ver información adicional de la biblioteca, consultar las normas de uso interno en la biblioteca, ver la política de privacidad,...</p>
+<p>Los usuarios que no sean socios de la biblioteca podrán consultar el horario de la biblioteca, consultar los precios y beneficios de poseer el carné de socio, una opción de contactar con la biblioteca (cómo llegar), ver las distintas redes sociales que tiene la biblioteca, ver información adicional de la biblioteca, consultar las normas de uso interno en la biblioteca, ver la política de privacidad, consultar los libros que están disponibles, consultar los fanzines, películas y revistas que están disponibles, etc</p>
 
 **Integrantes del equipo de desarrollo:**
 <ul>
@@ -55,45 +53,34 @@
 <li>Préstamo: Accede a la posibilidad de entrar en el espacio personal del usuario premium para renovar el carné anual, cambiar los datos personales, etc.</li>
 <li>Alternativa: Consulta los fanzines, revistas y películas que hay en la biblioteca. </li>
 
+
 **Instrucciones precisas para desplegar la aplicación:**
 <li> Compilación: 
       1. Botón derecho sobre el proyecto. 
       2. Clickar sobre 'Run as'
       3. Clickar sobre Spring Boot Application</li>
-<li> Cómo subir el .JAR:  
-      1. En consola, escribir 'svn clean'
-      2. En consola, escribir 'svn install'
-      3. En consola, escribir 'java -jar executableJar.jar'</li>
-<li> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y VirtualBox </li>
-
-<p>Virtualizacion</p
-      <p>creamos una carperta en home:</p
-      <li>sudo mkdir compartida</>
-
- <li>donde esta carpeta sera nuestra carpeta compartida donde pondremos nuestros archivos. </li>
- <li>sudo mount -t vboxsf shared /home/ </li>
-<p>instalamos java:</p>
-
- <li>sudo  apt install  </li>
- <li>sudo apt-get install -y openjdk-8-jdk </li>
-
-<p>instalamos mysql</p>
-
- <li>sudo apt-get install mysql-server </li>
-
-<p>creamos la base de datos y el nombre de nuestra base de datos</p>
-
-<li>sudo mysql</li>
-
-<p>creamos un usuario root</p>
-
-<li>create user 'root'@'127.0.0.1';</li>
-
-<p>modificamos la contraseña de la base de datos</p>
-<li>alter mysql.user 'root'@'localhost' identified with mysql_native_password by '123456';</li>
-<p>y ejecutamos los jar</p>
-<p>sudo java -jar BiblioSpringUrjc-0.0.1-SNAPSHOT &</p>
-<p>sudo java -jar Servicio_interno-0.0.1-SNAPSHOT  &</p>
+     
+<li>Virtualización</li>
+      <p>Creamos una carpeta en home: (aquí meteremos nuestros archivos)</p>
+      `sudo mkdir compartida`
+      `sudo mount -t vboxsf shared /home/`
+      <p>Instalamos java:</p>
+      `sudo  apt install`
+      `sudo apt-get install -y openjdk-8-jdk`
+      <p>Instalamos mysql</p>
+      `sudo apt-get install mysql-server`
+      <p>Creamos la base de datos y el nombre de nuestra base de datos</p>
+      `sudo mysql`
+      <p>Creamos un usuario "root"</p>
+      `create user 'root'@'127.0.0.1';`
+      <p>Modificamos la contraseña de la base de datos</p>
+      `alter mysql.user 'root'@'localhost' identified with mysql_native_password by '1234';`
+      <p>Ejecutamos los .jar</p>
+      `sudo java -jar BiblioSpringUrjc-0.0.1-SNAPSHOT &
+      sudo java -jar Servicio_interno-0.0.1-SNAPSHOT  &`
+      
+<li> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y VirtualBox </li>      
+      
 
 
 
