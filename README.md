@@ -56,11 +56,11 @@
 
 **Instrucciones precisas para desplegar la aplicación:**
 <p> Compilación: 
-      1. Botón derecho sobre el proyecto. 
-      2. Clickar sobre 'Run as'
-      3. Clickar sobre Spring Boot Application </p>
+	<li> 1. Botón derecho sobre el proyecto. </li> 
+	<li> 2. Clickar sobre 'Run as' </li>
+	<li> 3. Clickar sobre Spring Boot Application </li> </p>
      
-<p>Virtualización</p>
+<p>Virtualización:</p>
 
 Creamos una carpeta: (aquí meteremos nuestros archivos)
 
