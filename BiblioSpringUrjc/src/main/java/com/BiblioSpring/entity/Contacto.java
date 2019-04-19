@@ -63,10 +63,9 @@ public class Contacto {
 		this.comentario = comentario;
 	}
 
-	// to string + constructor
+	
 	public Contacto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Contacto(String nombre, String correo, String asunto, String comentario) {
@@ -83,4 +82,55 @@ public class Contacto {
 				+ "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int primo = 31; //porque es numero primo
+		int resultado = 1; //valor aleatorio inicial
+		resultado = primo * resultado + (int) (idContacto ^ (idContacto >>> 32));
+		resultado = primo * resultado + ((nombre == null) ? 0 : nombre.hashCode());
+		resultado = primo * resultado + ((correo == null) ? 0 : correo.hashCode());
+		resultado = primo * resultado + ((asunto == null) ? 0 : asunto.hashCode());
+		resultado = primo * resultado + ((comentario == null) ? 0 : comentario.hashCode());
+		
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Contacto otro = (Contacto) obj;
+		if (idContacto != otro.idContacto)
+			return false;
+		if (nombre == null) {
+			if (otro.nombre != null)
+				return false;
+		} else if (!nombre.equals(otro.nombre))
+			return false;
+		if (correo == null) {
+			if (otro.correo != null)
+				return false;
+		} else if (!correo.equals(otro.correo))
+			return false;
+		if (asunto == null) {
+			if (otro.asunto != null)
+				return false;
+		} else if (!asunto.equals(otro.asunto))
+			return false;
+		if (comentario == null) {
+			if (otro.comentario != null)
+				return false;
+		} else if (!comentario.equals(otro.comentario))
+			return false;
+		
+		return true;
+	}
 }

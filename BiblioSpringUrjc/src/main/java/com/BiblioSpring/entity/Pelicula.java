@@ -74,14 +74,64 @@ public class Pelicula{
 		this.ano = ano;
 	}
 
-	
-
 	public Alternativa getAlternativa() {
 		return alternativa;
 	}
 
 	public void setAlternativa(Alternativa alternativa) {
 		this.alternativa = alternativa;
+	}
+
+	@Override
+	public int hashCode() {
+		final int primo = 31; //porque es numero primo
+		int resultado = 1; //valor aleatorio inicial
+		resultado = primo * resultado + (int) (idPelicula ^ (idPelicula >>> 32));
+		resultado = primo * resultado + ((nombre == null) ? 0 : nombre.hashCode());
+		resultado = primo * resultado + ((ano == null) ? 0 : ano.hashCode());
+		resultado = primo * resultado + ((lugarPublicacion == null) ? 0 : lugarPublicacion.hashCode());
+		resultado = primo * resultado + ((alternativa == null) ? 0 : alternativa.hashCode());
+		
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Pelicula otro = (Pelicula) obj;
+		if (idPelicula != otro.idPelicula)
+			return false;
+		if (nombre == null) {
+			if (otro.nombre != null)
+				return false;
+		} else if (!nombre.equals(otro.nombre))
+			return false;
+		if (ano == null) {
+			if (otro.ano != null)
+				return false;
+		} else if (!ano.equals(otro.ano))
+			return false;
+		if (lugarPublicacion == null) {
+			if (otro.lugarPublicacion != null)
+				return false;
+		} else if (!lugarPublicacion.equals(otro.lugarPublicacion))
+			return false;
+		if (alternativa == null) {
+			if (otro.alternativa != null)
+				return false;
+		} else if (!alternativa.equals(otro.alternativa))
+			return false;
+		
+		return true;
 	}
 
 }

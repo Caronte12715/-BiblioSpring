@@ -123,5 +123,63 @@ public class Libro {
 		return "Libro [nombre=" + nombre + ", autor=" + autor + ", lugarPublicacion=" + lugarPublicacion
 				+ ", fechaPublicacion=" + fechaPublicacion + "]";
 	}
+	
+	@Override
+	public int hashCode() {
+		final int primo = 31; //porque es numero primo
+		int resultado = 1; //valor aleatorio inicial
+		resultado = primo * resultado + (int) (idLibro ^ (idLibro >>> 32));
+		resultado = primo * resultado + ((nombre == null) ? 0 : nombre.hashCode());
+		resultado = primo * resultado + ((autor == null) ? 0 : autor.hashCode());
+		resultado = primo * resultado + ((lugarPublicacion == null) ? 0 : lugarPublicacion.hashCode());
+		resultado = primo * resultado + ((fechaPublicacion == null) ? 0 : fechaPublicacion.hashCode());
+		resultado = primo * resultado + ((categorias == null) ? 0 : categorias.hashCode());
+		
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Libro otro = (Libro) obj;
+		if (idLibro != otro.idLibro)
+			return false;
+		if (nombre == null) {
+			if (otro.nombre != null)
+				return false;
+		} else if (!nombre.equals(otro.nombre))
+			return false;
+		if (autor == null) {
+			if (otro.autor != null)
+				return false;
+		} else if (!autor.equals(otro.autor))
+			return false;
+		if (fechaPublicacion == null) {
+			if (otro.fechaPublicacion != null)
+				return false;
+		} else if (!fechaPublicacion.equals(otro.fechaPublicacion))
+			return false;
+		if (lugarPublicacion == null) {
+			if (otro.lugarPublicacion != null)
+				return false;
+		} else if (!lugarPublicacion.equals(otro.lugarPublicacion))
+			return false;
+		if (categorias == null) {
+			if (otro.categorias != null)
+				return false;
+		} else if (!categorias.equals(otro.categorias))
+			return false;
+		
+		return true;
+	}
 
 }

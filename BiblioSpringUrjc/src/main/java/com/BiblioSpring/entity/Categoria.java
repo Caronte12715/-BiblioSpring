@@ -66,4 +66,44 @@ public class Categoria {
 	public String toString() {
 		return "Categoria [idCategoria=" + idCategoria + ", area=" + area + ", libros=" + libros + "]";
 	}
+	
+	@Override
+	public int hashCode() {
+		final int primo = 31; //porque es numero primo
+		int resultado = 1; //valor aleatorio inicial
+		resultado = primo * resultado + (int) (idCategoria ^ (idCategoria >>> 32));
+		resultado = primo * resultado + ((area == null) ? 0 : area.hashCode());
+		resultado = primo * resultado + ((libros == null) ? 0 : libros.hashCode());
+		
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Categoria otra = (Categoria) obj;
+		if (idCategoria != otra.idCategoria)
+			return false;
+		if (area == null) {
+			if (otra.area != null)
+				return false;
+		} else if (!area.equals(otra.area))
+			return false;
+		if (libros == null) {
+			if (otra.libros != null)
+				return false;
+		} else if (!libros.equals(otra.libros))
+			return false;
+		
+		return true;
+	}
 }

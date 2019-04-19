@@ -66,12 +66,63 @@ public class Alternativa {
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
 	}
+	
 	@Override
 	public String toString() {
 		return "Alternativa [alternativa=" + alternativa + ", fanzine=" + fanzine + ", revista=" + revista
 				+ ", pelicula=" + pelicula + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		final int primo = 31; //porque es numero primo
+		int resultado = 1; //valor aleatorio inicial
+		resultado = primo * resultado + (int) (idAlternativa ^ (idAlternativa >>> 32));
+		resultado = primo * resultado + ((alternativa == null) ? 0 : alternativa.hashCode());
+		resultado = primo * resultado + ((fanzine == null) ? 0 : fanzine.hashCode());
+		resultado = primo * resultado + ((revista == null) ? 0 : revista.hashCode());
+		resultado = primo * resultado + ((pelicula == null) ? 0 : pelicula.hashCode());
+		
+		return resultado;
+	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Alternativa otra = (Alternativa) obj;
+		if (idAlternativa != otra.idAlternativa)
+			return false;
+		if (alternativa == null) {
+			if (otra.alternativa != null)
+				return false;
+		} else if (!alternativa.equals(otra.alternativa))
+			return false;
+		if (fanzine == null) {
+			if (otra.fanzine != null)
+				return false;
+		} else if (!fanzine.equals(otra.fanzine))
+			return false;
+		if (pelicula == null) {
+			if (otra.pelicula != null)
+				return false;
+		} else if (!pelicula.equals(otra.pelicula))
+			return false;
+		if (revista == null) {
+			if (otra.revista != null)
+				return false;
+		} else if (!revista.equals(otra.revista))
+			return false;
+		
+		return true;
+	}
 
 }
