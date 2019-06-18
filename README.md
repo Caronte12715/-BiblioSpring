@@ -2,6 +2,8 @@
 
 **Nombre de la aplicación web:** BiblioSpring
 
+**Vídeo descriptivo:**
+
 **Descripción de la temática de la web:**
 <p>La web consistirá en proporcionar servicio de una biblioteca tanto a usuarios que quieran hacer uso de la misma o tanto al bibliotecario para realizar todas las tareas de gestión que se necesitase. </p>
 
@@ -33,7 +35,7 @@
 
 **Modelo UML:**
 
-![UML](https://github.com/agustinlopezg/bibliotecaWebUrjc_DAD/blob/master/UML_FASE3.jpg?raw=true)    
+![UML](https://github.com/agustinlopezg/bibliotecaWebUrjc_DAD/blob/master/UML_FASE4.jpg?raw=true)    
 
 **Diagrama de clases:**
 
