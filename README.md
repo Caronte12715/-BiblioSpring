@@ -3,7 +3,7 @@
 **Nombre de la aplicación web:** BiblioSpring
 
 **Vídeo descriptivo:**
-![](https://www.youtube.com/watch?v=Djd3V6I50sE)
+[![]()](https://www.youtube.com/watch?v=Djd3V6I50sE)
 
 **Descripción de la temática de la web:**
 <p>La web consistirá en proporcionar servicio de una biblioteca tanto a usuarios que quieran hacer uso de la misma o tanto al bibliotecario para realizar todas las tareas de gestión que se necesitase. </p>
