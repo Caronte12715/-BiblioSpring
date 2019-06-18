@@ -1,5 +1,6 @@
 package com.BiblioSpring;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,8 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.session.hazelcast.config.annotation.web.http.EnableHazelcastHttpSession;
 
 import com.hazelcast.config.Config;
@@ -29,7 +32,7 @@ public class BiblioSpringUrjcApplication {
 		
 		JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 		joinConfig.getMulticastConfig().setEnabled(false);
-		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
+		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Arrays.asList("172.17.0.3","172.17.0.4"));
 		return config;
 	}
 	
@@ -38,4 +41,11 @@ public class BiblioSpringUrjcApplication {
 		 System.out.println("Activating cache..."); //habrá que meterlo en un archivo Log
 		 return new ConcurrentMapCacheManager("BiblioSpring");
 	}
+	
+	/*@Bean
+	public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+	    StrictHttpFirewall firewall = new StrictHttpFirewall();
+	    firewall.setAllowUrlEncodedSlash(true);    
+	    return firewall;
+	}*/
 }
