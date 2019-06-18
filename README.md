@@ -51,13 +51,15 @@
 <li>Préstamo: Accede a la posibilidad de entrar en el espacio personal del usuario premium para renovar el carné anual, cambiar los datos personales, etc.</li>
 <li>Alternativa: Consulta los fanzines, revistas y películas que hay en la biblioteca. </li>
 
+
 **Interfaz del servicio interno:** 
-La comunicación entre la aplicación web y el servicio interno está realizada mediante API Rest.
-La función de la API Rest únicamente es mandar un mensaje de bienvenida a los nuevos usuarios que se registran.
-La comunicación se hace mediante el protocolo SMTP.
-EL servicio interno solo tiene dos clases: una clase (Entity) y otra clase controlador (Controller).
-La primera se conforma de dos atributos tipo String: el nombre de usuario y el nombre del correo.
-La segunda es la más laboriosa, en la que se fija cómo se realiza la comunicación, qué puerto usa, qué devuelve, mediante qué mecanismos se hace, y lo que debe contener el mensaje.
+<p> La comunicación entre la aplicación web y el servicio interno está realizada mediante API Rest.</p>
+<p> La función de la API Rest únicamente es mandar un mensaje de bienvenida a los nuevos usuarios que se registran. </p>
+<p> La comunicación se hace mediante el protocolo SMTP. </p>
+<p> El servicio interno solo tiene dos clases: una clase (Entity) y otra clase controlador (Controller).</p>
+<p> La primera se conforma de dos atributos tipo String: el nombre de usuario y el nombre del correo.</p>
+<p> La segunda es la más laboriosa, en la que se fija cómo se realiza la comunicación, qué puerto usa, qué devuelve, mediante qué mecanismos se hace, y lo que debe contener el mensaje.</p>
+
 
 **Instrucciones precisas para desplegar la aplicación:**
 <p> Compilación: 
