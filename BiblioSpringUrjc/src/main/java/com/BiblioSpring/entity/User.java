@@ -39,19 +39,7 @@ public class User {
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		//this.libros=new ArrayList<>();
 	}
-/*
-	public void addLibros(Libro l) {
-		this.libros.add(l);
-	}
-	
-	public List<Libro> getLibros() {
-		return libros;
-	}
 
-	public void setLibros(List<Libro> libros) {
-		this.libros = libros;
-	}
-*/
 	public String getEmail() {
 		return email;
 	}
