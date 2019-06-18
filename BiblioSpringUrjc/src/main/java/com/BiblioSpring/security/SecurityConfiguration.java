@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
@@ -28,12 +29,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/BiblioSpring/Pelicula").permitAll();
 		http.authorizeRequests().antMatchers("/BiblioSpring/Revista").permitAll();
 
-		// Private pages (all other pages)
 		http.authorizeRequests().antMatchers("/BiblioSpring/Login").permitAll();
 		http.authorizeRequests().antMatchers("/new_user").permitAll();
 		http.authorizeRequests().antMatchers("/register").permitAll();
 		http.authorizeRequests().antMatchers("/BiblioSpring/loginError").permitAll();
 		
+		// Private pages (all other pages)
         http.authorizeRequests().antMatchers("/BiblioSpring/Prestamo").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/BiblioSpring/Administrador").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/BiblioSpring/Libro/AddLibro").hasAnyRole("ADMIN");
@@ -58,5 +59,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// Database authentication provider
 		auth.authenticationProvider(authenticationProvider);
-	}
+	}    
 }
