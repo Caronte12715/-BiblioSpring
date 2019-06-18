@@ -45,12 +45,19 @@
      
 **Descripción de las pantallas principales:** 
 
-<li> Libro: Se puede buscar los libros que hay en la biblioteca por diferentes filtros: título y categoría </li>
+<li>Libro: Se puede buscar los libros que hay en la biblioteca por diferentes filtros: título y categoría </li>
 <li>Usuario: Ingresas a la aplicación mediane un LogIn en el que se tiene que escribir los datos (nombre y contraseña) para acceder.</li>
 <li>Categoría:Consulta todos los libros de la biblioteca repartidos en categorías para una mayor facilidad de uso</li>
 <li>Préstamo: Accede a la posibilidad de entrar en el espacio personal del usuario premium para renovar el carné anual, cambiar los datos personales, etc.</li>
 <li>Alternativa: Consulta los fanzines, revistas y películas que hay en la biblioteca. </li>
 
+**Interfaz del servicio interno:** 
+La comunicación entre la aplicación web y el servicio interno está realizada mediante API Rest.
+La función de la API Rest únicamente es mandar un mensaje de bienvenida a los nuevos usuarios que se registran.
+La comunicación se hace mediante el protocolo SMTP.
+EL servicio interno solo tiene dos clases: una clase (Entity) y otra clase controlador (Controller).
+La primera se conforma de dos atributos tipo String: el nombre de usuario y el nombre del correo.
+La segunda es la más laboriosa, en la que se fija cómo se realiza la comunicación, qué puerto usa, qué devuelve, mediante qué mecanismos se hace, y lo que debe contener el mensaje.
 
 **Instrucciones precisas para desplegar la aplicación:**
 <p> Compilación: 
@@ -58,40 +65,30 @@
 	<li> 2. Clickar sobre 'Run as' </li>
 	<li> 3. Clickar sobre Spring Boot Application </li> </p>
      
-<p>Virtualización:</p>
+<p>Virtualización en contenedores Docker:</p>
 
-Creamos una carpeta: (aquí meteremos nuestros archivos)
+Creamos las siguientes imágenes: (estando en el directorio de la aplicación web y/o de la aplicación del servicio interno)
 
-		sudo mkdir carpeta  
-            sudo mount -t vboxsf shared /home/
+		docker build -f Dockerfile -t "imagen_web" .
+		docker build -f DockerFile-HAPROXY -t balanceador .
+		docker build -f Dockerfile -t "imagen_servint" .
 
-Instalamos Java
-
-		sudo  apt install  
-            sudo apt-get install -y openjdk-8-jdk
+Corremos cinco contenedores (Puertos 8444, 8445, 8080, 443 y 3306):
+	
+		docker run --name container_mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql:5.6
+		docker run -e "SPRING_DATASOURCE_URL=jdbc:mysql://172.17.0.2/bibliospringbd?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" -p 8444:8444 --name=container_web imagen_web
+	   	docker run -e "SPRING_DATASOURCE_URL=jdbc:mysql://172.17.0.2/bibliospringbd?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" -p 8445:8445 --name=container_web2 imagen_web
+		docker run -p 8080:8080 --name=container_servint imagen_servint
+		docker run -p 443:443 --name=container_haproxy balanceador
             
-Instalamos MySQL server
+Si hay errores a la hora del acceso a MySQL y a la base de datos:
 
-		sudo apt-get install mysql-server 
-            
-Creamos la base de datos y el nombre de nuestra BBDD
-
-		sudo bibliospringbd
-            
-Creamos el usuario "root"
-
-		create user 'root'@'127.0.0.1';     
-            
-Modificamos la contraseña de la base de datos
-
-		alter mysql.user 'root'@'localhost' identified with mysql_native_password by '1234';
-            
-Ejecutamos los .jar
-
-		sudo java -jar BiblioSpringUrjc-0.0.1-SNAPSHOT & 
-            sudo java -jar Servicio_interno-0.0.1-SNAPSHOT &           
-            
-<p> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y VirtualBox </p>      
+		docker run -ti mysql:5.6 /bin/sh
+		# mysql -h 172.17.0.2 -P 3306 -u root -p
+		1234 (cuando nos pide que introduzcamos la contraseña)
+		create database bibliospringbd;
+                     
+<p> ¿Qué hace falta instalar?: Eclipse STS 4, Java 8, MySQL Workbench 8.0 y Docker Toolbox (Windows) </p>      
       
 
 
